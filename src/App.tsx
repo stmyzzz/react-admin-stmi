@@ -1,10 +1,10 @@
 /*
  * @Description:
  * @version:
- * @Author: dlyan.ding
+ * @Author: stmy.ding
  * @Date: 2021-09-21 23:09:45
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-03 13:46:51
+ * @LastEditTime: 2021-11-04 11:01:30
  */
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/lib/locale/zh_CN'

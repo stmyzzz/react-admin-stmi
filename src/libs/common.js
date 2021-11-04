@@ -1,9 +1,9 @@
 /*
  * @Description:
  * @version:
- * @Author: dlyan.ding
+ * @Author: stmy.ding
  * @Date: 2021-10-22 11:45:02
- * @LastEditors: dlyan.ding
+ * @LastEditors: stmy.ding
  * @LastEditTime: 2021-10-25 16:00:49
  */
 import * as R from 'ramda'

@@ -1,9 +1,9 @@
 /*
  * @Description:
  * @version:
- * @Author: dlyan.ding
+ * @Author: stmy.ding
  * @Date: 2021-11-03 15:13:42
- * @LastEditors: dlyan.ding
+ * @LastEditors: stmy.ding
  * @LastEditTime: 2021-11-03 18:00:15
  */
 import { Chart, Interval, Interaction } from 'bizcharts'

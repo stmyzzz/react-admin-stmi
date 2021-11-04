@@ -1,9 +1,9 @@
 /*
  * @Description:
  * @version:
- * @Author: dlyan.ding
+ * @Author: stmy.ding
  * @Date: 2021-09-29 09:53:10
- * @LastEditors: dlyan.ding
+ * @LastEditors: stmy.ding
  * @LastEditTime: 2021-10-22 15:27:05
  */
 const { override, addWebpackAlias } = require('customize-cra')

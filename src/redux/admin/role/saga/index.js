@@ -1,9 +1,9 @@
 /*
  * @Description:
  * @version:
- * @Author: dlyan.ding
+ * @Author: stmy.ding
  * @Date: 2021-11-02 15:58:08
- * @LastEditors: dlyan.ding
+ * @LastEditors: stmy.ding
  * @LastEditTime: 2021-11-02 17:15:46
  */
 import { all, takeLatest } from 'redux-saga/effects'

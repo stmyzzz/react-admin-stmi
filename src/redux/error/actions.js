@@ -1,9 +1,9 @@
 /*
  * @Description:
  * @version:
- * @Author: dlyan.ding
+ * @Author: stmy.ding
  * @Date: 2021-10-22 14:18:50
- * @LastEditors: dlyan.ding
+ * @LastEditors: stmy.ding
  * @LastEditTime: 2021-10-22 14:20:16
  */
 import { createActions } from 'redux-actions'
