@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-30 09:56:25
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 14:22:21
+ * @LastEditTime: 2021-11-04 14:48:36
  */
 import { handleActions } from 'redux-actions'
 import {
@@ -82,6 +82,8 @@ export const appReducer = handleActions(
     },
     [REMOVE_USER_INFO]: (state, action) => {
       localRemove('userInfo')
+      state.tags = []
+      state.userInfo = {}
       localRemove('tags')
       return {
         ...state

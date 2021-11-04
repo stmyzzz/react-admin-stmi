@@ -4,10 +4,11 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 16:04:12
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 13:37:35
+ * @LastEditTime: 2021-11-04 14:47:08
  */
 import { Button } from 'antd'
 import { formatTime } from '@/libs/utils'
+import PermissionView from '@/components/PermissionView'
 export const userColumns = handlePermissionView => {
   return [
     {
@@ -32,14 +33,16 @@ export const userColumns = handlePermissionView => {
       width: 200,
       render: (text, record) => {
         return (
-          <Button
-            type='primary'
-            onClick={() => {
-              handlePermissionView(record)
-            }}
-          >
-            编辑
-          </Button>
+          <PermissionView authKey='editRole'>
+            <Button
+              type='primary'
+              onClick={() => {
+                handlePermissionView(record)
+              }}
+            >
+              编辑
+            </Button>
+          </PermissionView>
         )
       }
     }
@@ -57,6 +60,8 @@ export const permissionShow = [
         title: '用户管理',
         key: 'userAdmin',
         children: [
+          { name: 'showUser', title: '查看列表', key: 'showUser' },
+          { name: 'addUser', title: '添加用户', key: 'addUser' },
           { name: 'editUser', title: '编辑用户', key: 'editUser' },
           { name: 'deleteUser', title: '删除用户', key: 'deleteUser' }
         ]
@@ -66,6 +71,8 @@ export const permissionShow = [
         title: '权限管理',
         key: 'permissionAdmin',
         children: [
+          { name: 'showRole', title: '查看列表', key: 'showRole' },
+          { name: 'addRole', title: '添加角色', key: 'addRole' },
           { name: 'editRole', title: '编辑角色', key: 'editRole' },
           { name: 'deleteRole', title: '删除角色', key: 'deleteRole' }
         ]

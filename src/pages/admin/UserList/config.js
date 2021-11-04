@@ -3,12 +3,13 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-11-02 14:43:02
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 10:52:47
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 14:36:40
  */
 import { Button, Row, Tag } from 'antd'
 import styles from './index.module.css'
 import { formatTime } from '@/libs/utils'
+import PermissionView from '@/components/PermissionView'
 export const userStatus = {
   0: '禁用',
   1: '启用'
@@ -71,23 +72,27 @@ export const userColumns = (handleRoleView, handleRoleDelete) => {
       render: (text, record) => {
         return (
           <Row>
-            <Button
-              onClick={() => {
-                handleRoleView(record)
-              }}
-              type='primary'
-            >
-              编辑
-            </Button>
-            <Button
-              type='primary'
-              className={styles.ml10}
-              onClick={() => {
-                handleRoleDelete(record)
-              }}
-            >
-              删除
-            </Button>
+            <PermissionView authKey='editUser'>
+              <Button
+                onClick={() => {
+                  handleRoleView(record)
+                }}
+                type='primary'
+              >
+                编辑
+              </Button>
+            </PermissionView>
+            <PermissionView authKey='deleteUser'>
+              <Button
+                type='primary'
+                className={styles.ml10}
+                onClick={() => {
+                  handleRoleDelete(record)
+                }}
+              >
+                删除
+              </Button>
+            </PermissionView>
           </Row>
         )
       }

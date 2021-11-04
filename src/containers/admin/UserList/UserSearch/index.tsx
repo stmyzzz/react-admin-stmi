@@ -3,12 +3,13 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:33:05
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 09:38:37
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 14:36:08
  */
 import { FC, useState } from 'react'
 import { Button, Input, Row, Col } from 'antd'
 import styles from '@/pages/admin/UserList/index.module.css'
+import PermissionView from '@/components/PermissionView'
 interface IUserSearchProps {
   handleSearch: (e: any) => void
   handleAddUser: (e: any) => void
@@ -39,9 +40,11 @@ const UserSearch: FC<IUserSearchProps> = props => {
           </Button>
         </Col>
         <Col>
-          <Button onClick={handleAddUser} type='primary'>
-            添加人员
-          </Button>
+          <PermissionView authKey='addUser'>
+            <Button onClick={handleAddUser} type='primary'>
+              添加人员
+            </Button>
+          </PermissionView>
         </Col>
       </Row>
     </div>

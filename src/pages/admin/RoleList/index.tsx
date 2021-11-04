@@ -4,12 +4,12 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:06:27
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 11:44:23
+ * @LastEditTime: 2021-11-04 14:45:06
  */
 import MainLayout from '@/components/MainLayout'
 import { Button, Table } from 'antd'
 import AddRoleModal from '@/containers/admin/RoleList/AddRoleModal'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { userColumns } from './config'
 import * as R from 'ramda'
 import { useSelector, useDispatch } from 'react-redux'
@@ -19,6 +19,7 @@ import {
 } from '@/redux/admin/role/selectors'
 import { getRoleListRequest } from '@/redux/admin/role/actions'
 import { defaultPageConfig } from '@/config'
+import PermissionView from '@/components/PermissionView'
 export const RoleList = () => {
   const [isShowRoleModal, setIsShowRoleModal] = useState(false)
   const [currentType, setCurrentType] = useState('')
@@ -58,9 +59,11 @@ export const RoleList = () => {
   return (
     <MainLayout>
       <div className='add-btn'>
-        <Button onClick={handleAddRole} type='primary'>
-          添加角色
-        </Button>
+        <PermissionView authKey='addRole'>
+          <Button onClick={handleAddRole} type='primary'>
+            添加角色
+          </Button>
+        </PermissionView>
       </div>
       <Table
         columns={userColumns(handlePermissionView)}
