@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-09-30 17:11:33
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 10:52:28
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 13:52:16
  */
 import moment from 'moment'
 import { routes } from '@/router/innerRouter/Routes'
@@ -16,7 +16,10 @@ export const localRead = key => {
 export const localSave = (key, value) => {
   localStorage.setItem(key, value)
 }
-
+//清空缓存
+export const localRemove = key => {
+  localStorage.removeItem(key)
+}
 //路由是否可以被展示
 export const getPathByRoutes = pathname => {
   const res = routes.find(item => {

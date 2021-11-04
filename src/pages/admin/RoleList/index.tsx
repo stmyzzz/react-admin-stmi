@@ -3,33 +3,33 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:06:27
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-04 09:55:07
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 11:44:23
  */
 import MainLayout from '@/components/MainLayout'
 import { Button, Table } from 'antd'
-import AddPermissionModa from '@/containers/admin/RoleList/AddRoleModal'
+import AddRoleModal from '@/containers/admin/RoleList/AddRoleModal'
 import { useState, useEffect } from 'react'
 import { userColumns } from './config'
 import * as R from 'ramda'
 import { useSelector, useDispatch } from 'react-redux'
 import {
-  isLoadingPermissionListSelector,
-  permissionListSelector
+  isLoadingRoleListSelector,
+  roleListSelector
 } from '@/redux/admin/role/selectors'
-import { getPermissionListRequest } from '@/redux/admin/role/actions'
+import { getRoleListRequest } from '@/redux/admin/role/actions'
 import { defaultPageConfig } from '@/config'
 export const RoleList = () => {
   const [isShowRoleModal, setIsShowRoleModal] = useState(false)
   const [currentType, setCurrentType] = useState('')
-  const isLoadingPermissionList = useSelector(isLoadingPermissionListSelector)
-  const [permissionItem, setPermissionItem] = useState<any>()
+  const isLoadingRoleList = useSelector(isLoadingRoleListSelector)
+  const [RoleItem, setRoleItem] = useState<any>()
   const dispatch = useDispatch()
-  const permissionList = useSelector(permissionListSelector)
+  const permissionList = useSelector(roleListSelector)
   const handleAddRole = () => {
     setIsShowRoleModal(true)
     setCurrentType('add')
-    setPermissionItem({})
+    setRoleItem({})
   }
   const handleAddRoleModalClose = () => {
     setIsShowRoleModal(false)
@@ -38,25 +38,22 @@ export const RoleList = () => {
     setCurrentType('edit')
     setIsShowRoleModal(true)
 
-    setPermissionItem(record)
+    setRoleItem(record)
   }
-  const getPermissionList = (
-    pageNo = 1,
-    pageSize = defaultPageConfig.pageSize
-  ) => {
+  const getRoleList = (pageNo = 1, pageSize = defaultPageConfig.pageSize) => {
     const params = {
       page_no: pageNo,
       page_size: pageSize
     }
-    dispatch(getPermissionListRequest(params))
+    dispatch(getRoleListRequest(params))
   }
   const handlePageChange = (page: any) => {
     const pageNo = page.current
     const pageSize = page.pageSize
-    getPermissionList(pageNo, pageSize)
+    getRoleList(pageNo, pageSize)
   }
   useEffect(() => {
-    getPermissionList()
+    getRoleList()
   }, [])
   return (
     <MainLayout>
@@ -81,14 +78,14 @@ export const RoleList = () => {
           showTotal: total => `共${total}条记录`
         }}
         onChange={handlePageChange}
-        loading={isLoadingPermissionList}
+        loading={isLoadingRoleList}
       ></Table>
-      <AddPermissionModa
+      <AddRoleModal
         visible={isShowRoleModal}
         type={currentType}
         handleCancel={handleAddRoleModalClose}
-        data={permissionItem}
-      ></AddPermissionModa>
+        data={RoleItem}
+      ></AddRoleModal>
     </MainLayout>
   )
 }

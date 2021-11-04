@@ -7,10 +7,7 @@
  * @LastEditTime: 2021-11-02 16:14:57
  */
 import { handleActions } from 'redux-actions'
-import {
-  GET_PERMISSION_LIST_REQUEST,
-  GET_PERMISSION_LIST_SUCCESSED
-} from './actions'
+import { GET_ROLE_LIST_REQUEST, GET_ROLE_LIST_SUCCESSED } from './actions'
 import * as R from 'ramda'
 const INITIAL_STATE = {
   permissionList: [],
@@ -19,9 +16,9 @@ const INITIAL_STATE = {
   }
 }
 
-export const permissionReducer = handleActions(
+export const roleReducer = handleActions(
   {
-    [GET_PERMISSION_LIST_REQUEST]: (state, action) => {
+    [GET_ROLE_LIST_REQUEST]: (state, action) => {
       return {
         ...state,
         loading: R.mergeDeepRight(state.loading, {
@@ -30,7 +27,7 @@ export const permissionReducer = handleActions(
         permissionList: action.payload
       }
     },
-    [GET_PERMISSION_LIST_SUCCESSED]: (state, action) => {
+    [GET_ROLE_LIST_SUCCESSED]: (state, action) => {
       return {
         ...state,
         loading: R.mergeDeepRight(state.loading, {

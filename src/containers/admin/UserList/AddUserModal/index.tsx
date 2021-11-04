@@ -9,9 +9,9 @@
 import { Modal, Form, Radio, Select, Input, message } from 'antd'
 import { FC, useEffect, useState } from 'react'
 import * as R from 'ramda'
-import { permissionListSelector } from '@/redux/admin/role/selectors'
+import { roleListSelector } from '@/redux/admin/role/selectors'
 import { useSelector, useDispatch } from 'react-redux'
-import { getPermissionListRequest } from '@/redux/admin/role/actions'
+import { getRoleListRequest } from '@/redux/admin/role/actions'
 import { addUserRequest, updateUserRequest } from '@/redux/admin/user/actions'
 import { usePromise } from '@/hooks'
 const { Option } = Select
@@ -25,7 +25,7 @@ const AddUserModal: FC<IAddUserModalProps> = (props: IAddUserModalProps) => {
   const { data, type, visible, handleCancel } = props
   const dispatchPromise = usePromise()
   const [form] = Form.useForm()
-  const permissionList = useSelector(permissionListSelector)
+  const permissionList = useSelector(roleListSelector)
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const handleSubmit = () => {
@@ -61,7 +61,7 @@ const AddUserModal: FC<IAddUserModalProps> = (props: IAddUserModalProps) => {
     })
   }
   useEffect(() => {
-    dispatch(getPermissionListRequest())
+    dispatch(getRoleListRequest())
   }, [])
   return (
     <Modal

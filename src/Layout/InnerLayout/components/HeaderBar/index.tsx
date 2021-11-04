@@ -3,25 +3,32 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-09-28 16:31:57
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 14:49:35
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 14:07:09
  */
-import React, { useState } from 'react'
+import React from 'react'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
 import './index.css'
 import BreadCrumb from './BreadCrumb'
+import { useHistory } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import { Avatar, Menu, Dropdown } from 'antd'
+import { userInfoSelector } from '@/redux/app/selectors'
+import { removeUserInfo } from '@/redux/app/actions'
 interface IHeaderProps {
   collapse: boolean
   onTrigger: () => void
 }
-const menu = (
-  <Menu>
-    <Menu.Item key='1'>退出登录</Menu.Item>
-  </Menu>
-)
+
 const HeaderBar: React.FC<IHeaderProps> = props => {
   const { collapse, onTrigger } = props
+  const nameEn = useSelector(userInfoSelector).nameEn
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const handleLogout = () => {
+    dispatch(removeUserInfo())
+    history.replace('/login')
+  }
   return (
     <div className='header-bar'>
       <div className='header-left'>
@@ -41,12 +48,21 @@ const HeaderBar: React.FC<IHeaderProps> = props => {
         </div>
       </div>
       <div className='info'>
-        <Dropdown overlay={menu} placement='bottomLeft'>
+        <Dropdown
+          overlay={
+            <Menu>
+              <Menu.Item key='1' onClick={handleLogout}>
+                退出登录
+              </Menu.Item>
+            </Menu>
+          }
+          placement='bottomLeft'
+        >
           <Avatar
             style={{ backgroundColor: '#f56a00', cursor: 'pointer' }}
             size={50}
           >
-            dlyan
+            {nameEn || '未登录'}
           </Avatar>
         </Dropdown>
       </div>

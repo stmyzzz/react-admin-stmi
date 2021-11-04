@@ -9,13 +9,13 @@
 import { put, call } from 'redux-saga/effects'
 import { getRoleList, addRole, updateRole } from '@/services/admin/role'
 import { setError } from '@/redux/error/actions'
-import { getPermissionListSuccessed } from '@/redux/admin/role/actions'
+import { getRoleListSuccessed } from '@/redux/admin/role/actions'
 export function* getRoleSaga({ payload }) {
   try {
     const res = yield call(getRoleList, payload)
     console.log(`permission res`, res)
     if (res.ret === 0) {
-      yield put(getPermissionListSuccessed(res))
+      yield put(getRoleListSuccessed(res))
       return
     }
   } catch (e) {

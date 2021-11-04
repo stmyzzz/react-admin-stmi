@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-11-02 16:04:12
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-04 09:53:45
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 13:37:35
  */
 import { Button } from 'antd'
 import { formatTime } from '@/libs/utils'
@@ -73,19 +73,19 @@ export const permissionShow = [
     ]
   },
   {
-    name: 'user',
-    title: '用户管理',
-    key: 'user',
+    name: 'panel',
+    title: '跑车看板',
+    key: 'panel',
     children: [
       {
-        name: 'userList',
-        title: '用户列表',
-        key: 'userList'
+        name: 'sellPanel',
+        title: '销售',
+        key: 'sellPanel'
       },
       {
-        name: 'adminList',
-        title: '管理员列表',
-        key: 'adminList'
+        name: 'setPanel',
+        title: '配置',
+        key: 'setPanel'
       }
     ]
   },

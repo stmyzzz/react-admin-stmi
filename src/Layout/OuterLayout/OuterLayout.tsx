@@ -3,22 +3,48 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-09-28 10:49:49
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 14:22:19
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 12:51:58
  */
-import { Form, Row, Input, Button } from 'antd'
+import { Form, message, Input, Button } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import styles from './index.module.css'
 import { useHistory } from 'react-router-dom'
+import { usePromise } from '@/hooks'
+import { useDispatch } from 'react-redux'
+import { loginRequest, setUserInfo } from '@/redux/app/actions'
 const OuterLayout = () => {
+  const dispatchPromise = usePromise()
   const history = useHistory()
+  const dispatch = useDispatch()
   const onFinish = (e: any) => {
-    history.push('/')
+    const { username, password } = e
+    const params = {
+      username,
+      password
+    }
+    dispatchPromise(loginRequest(params)).then(res => {
+      console.log(`res`, res)
+      if (res.ret === 0) {
+        const { userInfo } = res
+        message.success({
+          content: '登录成功！',
+          key: 'API_REQUEST'
+        })
+        dispatch(setUserInfo(userInfo))
+        history.push('/')
+      } else {
+        message.error({
+          content: res.errmsg,
+          key: 'API_REQUEST'
+        })
+      }
+    })
   }
   return (
     <div>
       <div className={styles.loginContainer}>
-        <div className={styles.loginHeader}>react supcar admin 🚗</div>
+        <div className={styles.loginHeader}>react admin stmi 🚗</div>
         <Form
           name='basic'
           className={styles.form}

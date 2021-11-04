@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-09-24 17:00:49
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 12:35:38
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 13:45:21
  */
 import { RouteProps } from 'react-router-dom'
 import { IconName } from '@/components/base/icon'
@@ -18,6 +18,7 @@ export default interface IRoute extends RouteProps {
   // icon供菜单使用
   icon?: IconName
   key?: any
+  access?: any //权限判断
   // 是否在侧边菜单显示
   hiddenInMenu?: boolean
   children?: IRoute[]

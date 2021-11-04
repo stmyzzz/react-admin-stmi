@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-09-29 17:11:16
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-01 17:50:40
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 14:10:23
  */
 import { Tooltip, Tag, Tabs } from 'antd'
 import { useLocation, Link, useHistory } from 'react-router-dom'
@@ -14,7 +14,6 @@ import { useEffect } from 'react'
 import { tagsSelector, activeTagSelector } from '@/redux/app/selectors'
 import styles from './index.module.css'
 import usePrevious from '@/hooks/usePrevious'
-import { getPathByRoutes } from '@/libs/utils'
 const { TabPane } = Tabs
 const TabBar = () => {
   const tags = useSelector(tagsSelector)

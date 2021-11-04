@@ -3,19 +3,25 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-09-30 09:56:25
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-02 16:13:46
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 14:22:21
  */
 import { handleActions } from 'redux-actions'
-import { ADD_TAG, REMOVE_TAG, SET_ACTIVE_TAG } from './actions'
-import { localRead, localSave } from '@/libs/utils'
+import {
+  ADD_TAG,
+  REMOVE_TAG,
+  SET_ACTIVE_TAG,
+  SET_USER_INFO,
+  REMOVE_USER_INFO
+} from './actions'
+import { localRead, localSave, localRemove } from '@/libs/utils'
 import { routes } from '@/router/innerRouter/Routes'
 import { getPathByRoutes } from '@/libs/utils'
 const INITIAL_STATE = {
-  tags: JSON.parse(localRead('tags')) || [],
-  activeTag: '/'
+  tags: JSON.parse(localRead('tags') || '[]'),
+  activeTag: '/',
+  userInfo: JSON.parse(localRead('userInfo') || '{}')
 }
-
 export const appReducer = handleActions(
   {
     [ADD_TAG]: (state, action) => {
@@ -63,6 +69,20 @@ export const appReducer = handleActions(
     [SET_ACTIVE_TAG]: (state, action) => {
       state.activeTag = action.payload
       console.log(`stateactive`, state)
+      return {
+        ...state
+      }
+    },
+    [SET_USER_INFO]: (state, action) => {
+      state.userInfo = action.payload
+      localSave('userInfo', JSON.stringify(state.userInfo))
+      return {
+        ...state
+      }
+    },
+    [REMOVE_USER_INFO]: (state, action) => {
+      localRemove('userInfo')
+      localRemove('tags')
       return {
         ...state
       }

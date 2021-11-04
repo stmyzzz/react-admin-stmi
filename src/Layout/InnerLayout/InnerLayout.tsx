@@ -3,61 +3,43 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-09-28 10:48:13
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 15:01:38
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 14:22:36
  */
 import React, { useState, useEffect } from 'react'
-import { Layout } from 'antd'
+import { Layout, message } from 'antd'
 import SiderBar from './components/SiderBar'
 import { useHistory, useLocation } from 'react-router-dom'
 import IRoute from '@/router/innerRouter/IRoute'
 import initRoutes from '../../router/innerRouter/initRoutes'
 import HeaderBar from './components/HeaderBar'
 import TabBar from './components/TabBar'
+import { useSelector } from 'react-redux'
 import InnerRouter from '@/router/innerRouter'
+import { userInfoSelector } from '@/redux/app/selectors'
 const InnerLayout: React.FC = props => {
   const history = useHistory()
-  const Location = useLocation()
+  // const Location = useLocation()
   const [collapse, setCollapse] = useState(false)
   const [routeMap, setRouteMap] = useState<IRoute[]>([])
+  const userInfo = useSelector(userInfoSelector)
+  if (!userInfo.permission) {
+    userInfo.permission = ''
+  }
   useEffect(() => {
-    // const obj: { title: string; pathname: string } = {
-    //   title: '',
-    //   pathname: ''
-    // }
-    // if (res === -1) {
-    //   obj.pathname = Location.pathname
-    //   arr.push(obj)
-    // }
-    // localSave('tags', JSON.stringify(arr))
     //检验登录态
-    const token = 1
+    const token = userInfo.permission
     if (!token) {
-      history.replace('/account/login')
+      message.success('登录超时，请重新登录', 0.7).then(() => {
+        history.replace('/login')
+      })
     } else {
-      setRouteMap(
-        initRoutes([
-          //权限
-          'admin',
-          'userAdmin',
-          'permissionAdmin',
-          'user',
-          'userList',
-          'adminList',
-          'car',
-          'carList',
-          'setList',
-          'panel',
-          'sellPanel',
-          'setPanel'
-        ])
-      )
+      setRouteMap(initRoutes(userInfo.permission.split(',')))
     }
-  }, [Location])
+  }, [])
   //检验当前页面是否有权限
 
   // 菜单折叠
-
   const triggerCollapse = () => {
     setCollapse(state => !state)
   }

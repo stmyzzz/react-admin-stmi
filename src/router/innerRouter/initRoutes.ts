@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-09-28 13:58:53
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 12:21:52
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 13:44:33
  */
 //获取有权限的路由表
 import { of } from 'ramda'
@@ -25,8 +25,7 @@ const fliterRouteMap = (routeNames: string[], routeMap: IRoute[]) => {
     //   }
     // }
     if (route.children) {
-      console.log(`route`, route.children)
-      if (routeNames.includes(route.name)) {
+      if (routeNames.includes(route.access)) {
         // acceptRouteMap.push(route)
         route.children = fliterRouteMap(routeNames, route.children)
         if (route.children.length > 0) {
@@ -34,7 +33,7 @@ const fliterRouteMap = (routeNames: string[], routeMap: IRoute[]) => {
         }
       }
     } else {
-      if (routeNames.includes(route.name)) {
+      if (routeNames.includes(route.access)) {
         acceptRouteMap.push(route)
       }
     }

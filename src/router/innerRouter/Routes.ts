@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-09-28 13:42:19
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-04 10:11:30
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 13:47:42
  */
 import { lazy } from 'react'
 import IRoute from './IRoute'
@@ -34,11 +34,13 @@ const routes: IRoute[] = [
     icon: 'menu1',
     key: 'admin',
     exact: true,
+    access: 'admin',
     children: [
       {
         name: 'userAdmin',
         title: '用户管理',
         path: '/admin/user',
+        access: 'userAdmin',
         exact: true,
         key: 'userAdmin',
         component: UserList
@@ -48,6 +50,7 @@ const routes: IRoute[] = [
         title: '权限管理',
         key: 'permissionAdmin',
         path: '/admin/permission',
+        access: 'permissionAdmin',
         exact: true,
         component: PermissionList
       }
@@ -59,6 +62,7 @@ const routes: IRoute[] = [
     path: '/car',
     icon: 'menu2',
     key: 'car',
+    access: 'car',
     exact: true,
     children: [
       {
@@ -67,6 +71,7 @@ const routes: IRoute[] = [
         path: '/car/carList',
         exact: true,
         key: 'carList',
+        access: 'carList',
         component: CarList
       },
       {
@@ -74,6 +79,7 @@ const routes: IRoute[] = [
         title: '配置列表',
         path: '/car/setList',
         exact: true,
+        access: 'setList',
         key: 'setList',
         component: SetList
       }
@@ -81,11 +87,12 @@ const routes: IRoute[] = [
   },
   {
     name: 'panel',
-    title: '跑车看板',
+    title: '汽车看板',
     path: '/panel',
     icon: 'menu2',
     key: 'panel',
     exact: true,
+    access: 'panel',
     children: [
       {
         name: 'sellPanel',
@@ -93,6 +100,7 @@ const routes: IRoute[] = [
         path: '/panel/sell',
         exact: true,
         key: 'sellPanel',
+        access: 'sellPanel',
         component: sellPanel
       },
       {
@@ -101,6 +109,7 @@ const routes: IRoute[] = [
         path: '/panel/set',
         exact: true,
         key: 'setPanel',
+        access: 'setPanel',
         component: setPanel
       }
     ]
