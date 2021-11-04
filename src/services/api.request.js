@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-10-22 11:05:08
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 09:27:59
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 11:24:29
  */
 import { message } from 'antd'
 import axios from 'axios'
@@ -14,8 +14,7 @@ import { API_BASE_PATH } from '../config'
 
 const instance = axios.create({
   baseURL: API_BASE_PATH,
-  timeout: 15000,
-  withCredentials: true
+  timeout: 15000
 })
 
 //请求拦截器
@@ -37,7 +36,7 @@ instance.interceptors.response.use(
   function (error) {
     const { data } = error.response
     message.error({
-      content: data.msg | '服务器错误',
+      content: data.errmsg | '服务器错误',
       key: 'API_REQUEST'
     })
     if (R.equals(401, data.status)) {

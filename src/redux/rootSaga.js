@@ -7,13 +7,6 @@
  * @LastEditTime: 2021-11-02 17:16:03
  */
 import { combineSagas } from '../libs/sagaHelpers'
-import { conWatcher } from './user/saga'
-import { contractWatcher } from './contract/saga'
 import { userWatcher } from './admin/user/saga'
-import { permissionWatcher } from './admin/role/saga'
-export const rootSaga = combineSagas([
-  conWatcher,
-  contractWatcher,
-  userWatcher,
-  permissionWatcher
-])
+import { roleWatcher } from './admin/role/saga'
+export const rootSaga = combineSagas([userWatcher, roleWatcher])

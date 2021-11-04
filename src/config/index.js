@@ -19,8 +19,7 @@ if (/localhost/.test(hostname)) {
   env = 'pre'
 }
 
-export const API_BASE_PATH =
-  env === 'local' || env === 'dev' ? '/api' : `http://112.74.56.190:3000`
+export const API_BASE_PATH = `http://112.74.56.190:3000`
 
 export const defaultPageConfig = {
   pageNo: 1,

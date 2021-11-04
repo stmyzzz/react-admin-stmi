@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-11-02 15:58:08
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-02 17:15:46
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-04 11:17:13
  */
 import { all, takeLatest } from 'redux-saga/effects'
 import {
@@ -12,8 +12,8 @@ import {
   ADD_ROLE_REQUEST,
   UPDATE_ROLE_REQUEST
 } from '../actions'
-import { getRoleSaga, addRoleSaga, updateRoleSaga } from './permissionSaga'
-export function* permissionWatcher() {
+import { getRoleSaga, addRoleSaga, updateRoleSaga } from './roleSaga'
+export function* roleWatcher() {
   try {
     yield all([
       takeLatest(GET_PERMISSION_LIST_REQUEST, getRoleSaga),
