@@ -1,0 +1,23 @@
+.form {
+  margin-top: 30px;
+  padding: 80px 60px;
+  border-radius: 6px;
+  box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+}
+
+.loginHeader {
+  font-size: 40px;
+  text-align: center;
+}
+
+.loginContainer {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  font-size: 25px;
+  margin-bottom: 30px;
+}

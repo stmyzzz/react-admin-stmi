@@ -1,3 +1,11 @@
+/*
+ * @Description:
+ * @version:
+ * @Author: dlyan.ding
+ * @Date: 2021-09-21 23:09:45
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-10-22 15:26:43
+ */
 import { ReportHandler } from 'web-vitals'
 
 const reportWebVitals = (onPerfEntry?: ReportHandler) => {

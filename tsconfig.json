@@ -6,10 +6,8 @@
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": ".",
     "allowJs": true,
-    "paths": {
-			"@/*": ["./src/*"]
-		},
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -21,9 +19,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "suppressImplicitAnyIndexErrors": true
   },
   "include": [
-    "src"
-  ]
+    "src",
+    "src/services/.js"
+  ],
+  "extends": "./paths.json"
 }

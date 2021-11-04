@@ -1,0 +1,22 @@
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.header-bar__trigger {
+  font-size: 23px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.info {
+  margin-right: 50px;
+  margin-top: 10px;
+}
