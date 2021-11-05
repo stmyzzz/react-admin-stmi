@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:06:27
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 14:55:40
+ * @LastEditTime: 2021-11-05 18:00:09
  */
 import MainLayout from '@/components/MainLayout'
 import { Button, Table } from 'antd'
@@ -35,11 +35,11 @@ export const RoleList = () => {
   }
   const handleAddRoleModalClose = () => {
     setIsShowRoleModal(false)
+    getRoleList()
   }
   const handlePermissionView = (record: { permission: any }) => {
     setCurrentType('edit')
     setIsShowRoleModal(true)
-
     setRoleItem(record)
   }
   const getRoleList = (pageNo = 1, pageSize = defaultPageConfig.pageSize) => {

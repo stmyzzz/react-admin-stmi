@@ -4,11 +4,11 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:33:05
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 14:36:08
+ * @LastEditTime: 2021-11-05 20:25:13
  */
 import { FC, useState } from 'react'
 import { Button, Input, Row, Col } from 'antd'
-import styles from '@/pages/admin/UserList/index.module.css'
+import styles from '@/pages/UserList/index.module.css'
 import PermissionView from '@/components/PermissionView'
 interface IUserSearchProps {
   handleSearch: (e: any) => void
