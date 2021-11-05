@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-29 13:52:29
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-05 17:02:38
+ * @LastEditTime: 2021-11-05 20:49:57
  */
 import MainLayout from '@/components/MainLayout'
 import { Table, Button } from 'antd'
@@ -12,7 +12,7 @@ import { carColumns, typeColmns } from './config'
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCarListRequest } from '@/redux/carList/actions'
-import AddCarModal from '@/containers/car/CarList/AddCarModal'
+import AddCarModal from '@/containers/CarList/AddCarModal'
 import { carListSelector } from '@/redux/carList/selectors'
 import * as R from 'ramda'
 import './index.css'

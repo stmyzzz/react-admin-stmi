@@ -4,17 +4,18 @@
  * @Author: stmy.ding
  * @Date: 2021-09-29 13:52:36
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-05 17:48:43
+ * @LastEditTime: 2021-11-05 20:42:45
  */
 import MainLayout from '@/components/MainLayout'
 import { Card, Row, Col } from 'antd'
 import { Image } from 'antd'
+import { EditFilled } from '@ant-design/icons'
 const SetList = () => {
   return (
     <MainLayout>
-      <Row>
+      <Row gutter={20}>
         <Col span={8}>
-          <Card title='911' bordered={false}>
+          <Card title='911' extra={<EditFilled />} bordered={false}>
             <Image
               src='https://files.porsche.cn/filestore/image/multimedia/none/992-c2-modelimage-sideshot/model/5d3635ab-d97f-11eb-80d9-005056bbdc38;sN;twebp/porsche-model.webp'
               width={300}
@@ -40,8 +41,7 @@ const SetList = () => {
             />
           </Card>
         </Col>
-      </Row>
-      <Row>
+
         <Col span={8}>
           <Card title='panamera' bordered={false}>
             <Image

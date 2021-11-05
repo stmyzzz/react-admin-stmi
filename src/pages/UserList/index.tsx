@@ -4,13 +4,13 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:07:25
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-05 10:49:37
+ * @LastEditTime: 2021-11-05 20:50:00
  */
 import { Table, Modal, message } from 'antd'
 import { useState, useEffect } from 'react'
 import MainLayout from '@/components/MainLayout'
-import AddUserModal from '@/containers/admin/UserList/AddUserModal'
-import UserSearch from '@/containers/admin/UserList/UserSearch'
+import AddUserModal from '@/containers/UserList/AddUserModal'
+import UserSearch from '@/containers/UserList/UserSearch'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   isLoadingUserListSelector,
