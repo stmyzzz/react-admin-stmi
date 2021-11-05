@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 16:04:12
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 14:47:08
+ * @LastEditTime: 2021-11-04 14:57:56
  */
 import { Button } from 'antd'
 import { formatTime } from '@/libs/utils'
@@ -73,15 +73,14 @@ export const permissionShow = [
         children: [
           { name: 'showRole', title: '查看列表', key: 'showRole' },
           { name: 'addRole', title: '添加角色', key: 'addRole' },
-          { name: 'editRole', title: '编辑角色', key: 'editRole' },
-          { name: 'deleteRole', title: '删除角色', key: 'deleteRole' }
+          { name: 'editRole', title: '编辑角色', key: 'editRole' }
         ]
       }
     ]
   },
   {
     name: 'panel',
-    title: '跑车看板',
+    title: '汽车看板',
     key: 'panel',
     children: [
       {
@@ -98,12 +97,12 @@ export const permissionShow = [
   },
   {
     name: 'car',
-    title: '跑车',
+    title: '汽车',
     key: 'car',
     children: [
       {
         name: 'carList',
-        title: '跑车列表',
+        title: '汽车列表',
         key: 'carList'
       },
       {

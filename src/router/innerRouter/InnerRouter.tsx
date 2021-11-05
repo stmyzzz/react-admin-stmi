@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-27 18:05:11
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 11:01:25
+ * @LastEditTime: 2021-11-05 14:27:19
  */
 import React, { Suspense } from 'react'
 import { Switch, Route, RouteProps, Redirect } from 'react-router-dom'
@@ -51,7 +51,6 @@ const InnerRouter: React.FC<IProps> = ({ routeMap }) => {
             component={route.component}
           />
         ))}
-        <Redirect path={'*'} to={'/404'}></Redirect>
       </Switch>
     </Suspense>
   )

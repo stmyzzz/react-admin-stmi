@@ -8,11 +8,11 @@
  */
 import { lazy } from 'react'
 import IRoute from './IRoute'
-const CarList = lazy(() => import('../../pages/car/CarList'))
-const SetList = lazy(() => import('../../pages/car/SetList'))
+const CarList = lazy(() => import('../../pages/CarList'))
+const SetList = lazy(() => import('../../pages/SetList'))
 const Home = lazy(() => import('../../pages/home'))
-const UserList = lazy(() => import('../../pages/admin/UserList'))
-const PermissionList = lazy(() => import('../../pages/admin/RoleList'))
+const UserList = lazy(() => import('../../pages/UserList'))
+const PermissionList = lazy(() => import('../../pages/RoleList'))
 const sellPanel = lazy(() => import('../../pages/panel/SellPanel'))
 const setPanel = lazy(() => import('../../pages/panel/SetPanel'))
 //单独路由
@@ -58,7 +58,7 @@ const routes: IRoute[] = [
   },
   {
     name: 'car',
-    title: '跑车',
+    title: '汽车',
     path: '/car',
     icon: 'menu2',
     key: 'car',
@@ -67,7 +67,7 @@ const routes: IRoute[] = [
     children: [
       {
         name: 'carList',
-        title: '跑车列表',
+        title: '汽车列表',
         path: '/car/carList',
         exact: true,
         key: 'carList',

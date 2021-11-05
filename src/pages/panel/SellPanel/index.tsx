@@ -81,7 +81,7 @@ const SellPanel = () => {
           autoFit
           description={{
             visible: true,
-            text: '跑车车型占总销售量的比重'
+            text: '汽车车型占总销售量的比重'
           }}
           height={400}
           radius={0.8}

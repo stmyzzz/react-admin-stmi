@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:06:27
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 14:45:06
+ * @LastEditTime: 2021-11-04 14:55:40
  */
 import MainLayout from '@/components/MainLayout'
 import { Button, Table } from 'antd'
@@ -16,8 +16,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   isLoadingRoleListSelector,
   roleListSelector
-} from '@/redux/admin/role/selectors'
-import { getRoleListRequest } from '@/redux/admin/role/actions'
+} from '@/redux/role/selectors'
+import './index.css'
+import { getRoleListRequest } from '@/redux/role/actions'
 import { defaultPageConfig } from '@/config'
 import PermissionView from '@/components/PermissionView'
 export const RoleList = () => {
@@ -66,6 +67,7 @@ export const RoleList = () => {
         </PermissionView>
       </div>
       <Table
+        className='roleTable'
         columns={userColumns(handlePermissionView)}
         rowKey={record => record.id}
         dataSource={R.pathOr([], ['data'], permissionList)}

@@ -9,10 +9,10 @@
 import { Modal, Form, Radio, Select, Input, message } from 'antd'
 import { FC, useEffect, useState } from 'react'
 import * as R from 'ramda'
-import { roleListSelector } from '@/redux/admin/role/selectors'
+import { roleListSelector } from '@/redux/role/selectors'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRoleListRequest } from '@/redux/admin/role/actions'
-import { addUserRequest, updateUserRequest } from '@/redux/admin/user/actions'
+import { getRoleListRequest } from '@/redux/role/actions'
+import { addUserRequest, updateUserRequest } from '@/redux/user/actions'
 import { usePromise } from '@/hooks'
 const { Option } = Select
 export interface IAddUserModalProps {

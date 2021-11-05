@@ -3,15 +3,16 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-11-02 11:02:38
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-04 10:06:16
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-05 14:39:47
  */
 import { Modal, Form, Tree, Input, message } from 'antd'
 import { FC, useEffect, useState } from 'react'
 import * as R from 'ramda'
-import { permissionShow } from '@/pages/admin/RoleList/config'
+import { permissionShow } from '@/pages/RoleList/config'
 import { usePromise } from '@/hooks'
-import { addRoleRequest, updateRoleRequest } from '@/redux/admin/role/actions'
+import { addRoleRequest, updateRoleRequest } from '@/redux/role/actions'
+
 export interface IAddRoleModal {
   data?: any
   type: string
@@ -24,6 +25,7 @@ const AddUserModal: FC<IAddRoleModal> = (props: IAddRoleModal) => {
   const [form] = Form.useForm()
   const [checkedKeys, setCheckedKeys] = useState([])
   const [loading, setLoading] = useState(false)
+
   const handleSubmit = () => {
     form.validateFields().then((values: any) => {
       console.log(`values`, values)

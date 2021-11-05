@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-11-02 14:35:35
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 10:04:51
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-05 10:18:12
  */
 import { call, put } from 'redux-saga/effects'
 import {
@@ -14,7 +14,7 @@ import {
   deleteUser
 } from '@/services/admin/user'
 import { setError } from '@/redux/error/actions'
-import { getUserListSuccessed } from '@/redux/admin/user/actions'
+import { getUserListSuccessed } from '@/redux/user/actions'
 
 export function* getUserListSaga({ payload }) {
   try {
