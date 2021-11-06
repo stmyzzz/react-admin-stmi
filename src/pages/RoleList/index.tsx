@@ -4,12 +4,12 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:06:27
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-05 20:50:09
+ * @LastEditTime: 2021-11-05 22:03:04
  */
 import MainLayout from '@/components/MainLayout'
 import { Button, Table } from 'antd'
 import AddRoleModal from '@/containers/RoleList/AddRoleModal'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { userColumns } from './config'
 import * as R from 'ramda'
 import { useSelector, useDispatch } from 'react-redux'

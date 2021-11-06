@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-11-03 15:13:42
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 17:27:15
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-06 14:10:37
  */
 import { Chart, LineAdvance, DonutChart } from 'bizcharts'
 import { Row, Col } from 'antd'
@@ -17,7 +17,7 @@ import {
 } from '@ant-design/icons'
 import CountUp from 'react-countup'
 import MainLayout from '@/components/MainLayout'
-import './index.scss'
+import './index.css'
 const SellPanel = () => {
   return (
     <MainLayout>

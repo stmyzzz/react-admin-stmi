@@ -3,14 +3,14 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-11-03 15:13:42
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-03 18:00:15
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-06 14:10:17
  */
 import { Chart, Interval, Interaction } from 'bizcharts'
 
 import { data } from './config'
 import MainLayout from '@/components/MainLayout'
-import './index.scss'
+import './index.css'
 const SetPanel = () => {
   return (
     <MainLayout>
