@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-04 17:26:18
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-05 17:10:20
+ * @LastEditTime: 2021-11-06 18:26:09
  */
 import {
   Modal,
@@ -21,6 +21,9 @@ import { sellStatus } from '@/pages/CarList/config'
 import { FC, useEffect, useState } from 'react'
 import * as R from 'ramda'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
+import moment from 'moment'
+import { addCarRequest, updateCarRequest } from '@/redux/carList/actions'
+import { usePromise } from '@/hooks'
 const { RangePicker } = DatePicker
 const { Option } = Select
 export interface IAddCarModal {
@@ -34,14 +37,12 @@ const areas = [
   { label: '广州', value: '1002' },
   { label: '深圳', value: '1003' }
 ]
-const sights = {
-  Beijing: ['Tiananmen', 'Great Wall'],
-  Shanghai: ['Oriental Pearl', 'The Bund']
-}
 
 const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
   const { data, type, visible, handleCancel } = props
+  const dispatchPromise = usePromise()
   const [form] = Form.useForm()
+  console.log(`data`, data)
   useEffect(() => {
     if (visible) {
       if (type === 'add') {
@@ -51,12 +52,18 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
       } else {
         form.setFieldsValue({
           ...data,
-          sellCity: data.sellCity.split(',')
+          sellCity: data.sellCity.split(','),
+          openCityTime: [
+            moment(data.openCityTime[0], 'YYYY-MM-DD'),
+            moment(data.openCityTime[1], 'YYYY-MM-DD')
+          ]
         })
       }
+
+      console.log(`object`, form)
     }
   }, [data])
-  const onFinish = (data: any) => {
+  const onFinish = (record: any) => {
     form.validateFields().then((values: any) => {
       console.log(`传递的参数`, values)
       if (!values.types || values.types.length === 0) {
@@ -64,9 +71,30 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
         return
       }
       const params = {
+        id: data.id,
         ...values,
         sellCity: values.sellCity.join(',')
       }
+      dispatchPromise(
+        type === 'add' ? addCarRequest(params) : updateCarRequest(params)
+      )
+        .then(res => {
+          if (res.ret === 0) {
+            message.success({
+              content: '提交成功！',
+              key: 'API_REQUEST'
+            })
+            handleCancel()
+          } else {
+            message.error({
+              content: res.errmsg,
+              key: 'API_REQUEST'
+            })
+          }
+        })
+        .finally(() => {
+          // setLoading(false)
+        })
       console.log(`传递的参数params`, params)
     })
   }
@@ -78,7 +106,7 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
     <Modal
       title={type === 'add' ? '添加用户' : '编辑用户'}
       visible={visible}
-      width='700px'
+      width='800px'
       onCancel={handleCancel}
       destroyOnClose={true}
       onOk={onFinish}
@@ -105,13 +133,16 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
             onChange={handleChange}
           />
         </Form.Item>
-        {/* <Form.Item
+        <Form.Item
           name='openCityTime'
           label='上市时间'
           rules={[{ required: true, message: '请输入上市时间' }]}
         >
-          <RangePicker showTime placeholder={['开始时间', '结束时间']} />
-        </Form.Item> */}
+          <RangePicker
+            format='YYYY-MM-DD'
+            placeholder={['开始时间', '结束时间']}
+          />
+        </Form.Item>
         <Form.Item
           label='价格'
           name='priceRange'

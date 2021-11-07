@@ -4,9 +4,10 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-04 16:10:21
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-05 16:57:58
+ * @LastEditTime: 2021-11-06 18:25:29
  */
 import { Button, Badge } from 'antd'
+import { formatTime } from '@/libs/utils'
 export const sellStatus = {
   0: '待发售',
   1: '已发售'
@@ -34,7 +35,13 @@ export const carColumns = handleEdit => {
       dataIndex: 'openCityTime',
       key: 'openCityTime',
       render: (text, record) => {
-        return <div>{record.openCityTime}</div>
+        return (
+          <div>
+            {formatTime(record.openCityTime[0], 'YYYY-MM-DD') +
+              '-' +
+              formatTime(record.openCityTime[1], 'YYYY-MM-DD')}
+          </div>
+        )
       }
     },
     {
@@ -43,6 +50,14 @@ export const carColumns = handleEdit => {
       key: 'priceRange',
       render: (text, record) => {
         return <div>{record.priceRange}</div>
+      }
+    },
+    {
+      title: '更新时间',
+      dataIndex: 'updateAt',
+      key: 'updateAt',
+      render: (text, record) => {
+        return <div>{formatTime(record.updateAt, 'YYYY-MM-DD HH:mm:ss')}</div>
       }
     },
     {
@@ -79,6 +94,5 @@ export const typeColmns = [
         {sellStatus[record.status]}
       </span>
     )
-  },
-  { title: '更新时间', dataIndex: 'updateAt', key: 'updateAt' }
+  }
 ]

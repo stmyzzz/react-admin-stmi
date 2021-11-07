@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-28 13:42:19
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 13:47:42
+ * @LastEditTime: 2021-11-06 16:59:29
  */
 import { lazy } from 'react'
 import IRoute from './IRoute'
@@ -15,6 +15,7 @@ const UserList = lazy(() => import('../../pages/UserList'))
 const PermissionList = lazy(() => import('../../pages/RoleList'))
 const sellPanel = lazy(() => import('../../pages/panel/SellPanel'))
 const setPanel = lazy(() => import('../../pages/panel/SetPanel'))
+
 //单独路由
 const appRoutes = [
   {
