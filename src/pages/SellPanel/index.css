@@ -6,12 +6,12 @@
 
 }
 
-span {
+.index-header span {
   font-weight: 600;
   font-size: 2rem;
 }
 
-.base-style {
+.index-header .base-style {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,20 +19,20 @@ span {
   padding: 10px 0px;
 }
 
-.wechat {
+.index-header .wechat {
   background-color: #70ca63;
 }
 
-.sell {
+.index-header .sell {
   background-color: #0092ff;
 }
 
-.icon-style {
+.index-header .icon-style {
   color: #fbfbf4b3;
   font-size: 3rem;
   padding-right: 1rem;
 }
 
-.base-title {
+.index-header .base-title {
   font-size: 1.2rem;
 }

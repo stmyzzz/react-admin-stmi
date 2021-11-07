@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-28 13:42:19
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-06 16:59:29
+ * @LastEditTime: 2021-11-07 16:08:51
  */
 import { lazy } from 'react'
 import IRoute from './IRoute'
@@ -13,8 +13,8 @@ const SetList = lazy(() => import('../../pages/SetList'))
 const Home = lazy(() => import('../../pages/home'))
 const UserList = lazy(() => import('../../pages/UserList'))
 const PermissionList = lazy(() => import('../../pages/RoleList'))
-const sellPanel = lazy(() => import('../../pages/panel/SellPanel'))
-const setPanel = lazy(() => import('../../pages/panel/SetPanel'))
+const sellPanel = lazy(() => import('../../pages/SellPanel'))
+const setPanel = lazy(() => import('../../pages/SetPanel'))
 
 //单独路由
 const appRoutes = [
@@ -97,7 +97,7 @@ const routes: IRoute[] = [
     children: [
       {
         name: 'sellPanel',
-        title: '销售',
+        title: '销售看板',
         path: '/panel/sell',
         exact: true,
         key: 'sellPanel',
@@ -106,7 +106,7 @@ const routes: IRoute[] = [
       },
       {
         name: 'setPanel',
-        title: '配置',
+        title: '配置看板',
         path: '/panel/set',
         exact: true,
         key: 'setPanel',
