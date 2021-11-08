@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-04 17:26:18
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-08 14:44:14
+ * @LastEditTime: 2021-11-08 15:14:15
  */
 import {
   Modal,
@@ -18,7 +18,7 @@ import {
   InputNumber
 } from 'antd'
 import { arrMaxMin } from '@/libs/utils'
-import { sellStatus } from '@/pages/CarList/config'
+import { sellStatus, sellCityMap } from '@/pages/CarList/config'
 import { FC, useEffect, useState } from 'react'
 import * as R from 'ramda'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
@@ -33,11 +33,6 @@ export interface IAddCarModal {
   visible: boolean
   handleCancel: any
 }
-const areas = [
-  { label: '北京', value: '1001' },
-  { label: '广州', value: '1002' },
-  { label: '深圳', value: '1003' }
-]
 
 const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
   const { data, type, visible, handleCancel } = props
@@ -128,8 +123,8 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
           <Select
             mode='multiple'
             allowClear
-            placeholder='请输入销售城市'
-            options={areas}
+            placeholder='请选择销售城市'
+            options={sellCityMap}
           />
         </Form.Item>
         <Form.Item
@@ -172,6 +167,7 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
                   >
                     <InputNumber />
                   </Form.Item>
+                  <p>kW</p>
                   <Form.Item
                     {...field}
                     label='百公里加速'

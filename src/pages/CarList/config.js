@@ -4,13 +4,23 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-04 16:10:21
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-08 13:43:18
+ * @LastEditTime: 2021-11-08 15:09:51
  */
 import { Button, Badge } from 'antd'
 import { formatTime } from '@/libs/utils'
 export const sellStatus = {
   0: '待发售',
   1: '已发售'
+}
+export const sellCityMap = [
+  { label: '北京', value: '1001' },
+  { label: '广州', value: '1002' },
+  { label: '深圳', value: '1003' }
+]
+export const sellCity = {
+  1001: '北京',
+  1002: '广州',
+  1003: '深圳'
 }
 export const carColumns = handleEdit => {
   return [
@@ -27,7 +37,17 @@ export const carColumns = handleEdit => {
       dataIndex: 'sellCity',
       key: 'sellCity',
       render: (text, record) => {
-        return <div>{record.sellCity}</div>
+        return (
+          <div>
+            {record.sellCity
+              .split(',')
+              .map(item => {
+                console.log(`item`, item)
+                return sellCity[item]
+              })
+              .join(',')}
+          </div>
+        )
       }
     },
     {
