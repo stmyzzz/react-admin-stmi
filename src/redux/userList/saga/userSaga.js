@@ -14,7 +14,7 @@ import {
   deleteUser
 } from '@/services/admin/user'
 import { setError } from '@/redux/error/actions'
-import { getUserListSuccessed } from '@/redux/user/actions'
+import { getUserListSuccessed } from '@/redux/userList/actions'
 
 export function* getUserListSaga({ payload }) {
   try {

@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:06:27
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-05 22:03:04
+ * @LastEditTime: 2021-11-08 13:02:20
  */
 import MainLayout from '@/components/MainLayout'
 import { Button, Table } from 'antd'
@@ -16,9 +16,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   isLoadingRoleListSelector,
   roleListSelector
-} from '@/redux/role/selectors'
+} from '@/redux/roleList/selectors'
 import './index.css'
-import { getRoleListRequest } from '@/redux/role/actions'
+import { getRoleListRequest } from '@/redux/roleList/actions'
 import { defaultPageConfig } from '@/config'
 import PermissionView from '@/components/PermissionView'
 export const RoleList = () => {
@@ -70,6 +70,7 @@ export const RoleList = () => {
         className='roleTable'
         columns={userColumns(handlePermissionView)}
         rowKey={record => record.id}
+        scroll={{ y: 600 }}
         dataSource={R.pathOr([], ['data'], permissionList)}
         pagination={{
           current: R.pathOr(1, ['page_no'], permissionList),

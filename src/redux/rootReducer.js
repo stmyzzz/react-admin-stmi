@@ -8,8 +8,8 @@
  */
 import { combineReducers } from 'redux'
 import { appReducer } from './app/reducer'
-import { userReducer } from './user/reducer'
-import { roleReducer } from './role/reducer'
+import { userReducer } from './userList/reducer'
+import { roleReducer } from './roleList/reducer'
 import { carReducer } from './carList/reducer'
 import { setReducer } from './setList/reducer'
 export const rootReducer = combineReducers({

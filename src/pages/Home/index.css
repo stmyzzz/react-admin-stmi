@@ -1,0 +1,15 @@
+.home {
+  text-align: center;
+  margin-top: 20px;
+
+}
+
+.home .homeTitle span {
+  font-size: 80px;
+  margin-bottom: 0;
+}
+
+.home .nameTitle {
+  font-size: 15px;
+  margin: 0 30px;
+}

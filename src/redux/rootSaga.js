@@ -7,8 +7,8 @@
  * @LastEditTime: 2021-11-07 03:04:06
  */
 import { combineSagas } from '../libs/sagaHelpers'
-import { userWatcher } from './user/saga'
-import { roleWatcher } from './role/saga'
+import { userWatcher } from './userList/saga'
+import { roleWatcher } from './roleList/saga'
 import { appWatcher } from './app/saga'
 import { carWatcher } from './carList/saga'
 import { setWatcher } from './setList/saga'

@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:07:25
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-05 20:50:00
+ * @LastEditTime: 2021-11-08 13:05:12
  */
 import { Table, Modal, message } from 'antd'
 import { useState, useEffect } from 'react'
@@ -15,12 +15,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   isLoadingUserListSelector,
   userListSelector
-} from '@/redux/user/selectors'
+} from '@/redux/userList/selectors'
 import { usePromise } from '@/hooks'
 import * as R from 'ramda'
 import { userColumns } from './config'
 import { defaultPageConfig } from '@/config'
-import { getUserListRequest, deleteUserRequest } from '@/redux/user/actions'
+import { getUserListRequest, deleteUserRequest } from '@/redux/userList/actions'
 const AdminList = () => {
   const [isShowAddModal, setShowAddModal] = useState(false)
   const [currentType, setCurrentType] = useState('')

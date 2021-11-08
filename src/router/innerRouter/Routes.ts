@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-28 13:42:19
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-07 16:08:51
+ * @LastEditTime: 2021-11-08 11:14:42
  */
 import { lazy } from 'react'
 import IRoute from './IRoute'
@@ -61,7 +61,7 @@ const routes: IRoute[] = [
     name: 'car',
     title: '汽车',
     path: '/car',
-    icon: 'menu2',
+    icon: 'menu3',
     key: 'car',
     access: 'car',
     exact: true,
@@ -90,7 +90,7 @@ const routes: IRoute[] = [
     name: 'panel',
     title: '汽车看板',
     path: '/panel',
-    icon: 'menu2',
+    icon: 'menu5',
     key: 'panel',
     exact: true,
     access: 'panel',

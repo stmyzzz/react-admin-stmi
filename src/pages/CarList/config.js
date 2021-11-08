@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-04 16:10:21
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-06 18:25:29
+ * @LastEditTime: 2021-11-08 12:53:44
  */
 import { Button, Badge } from 'antd'
 import { formatTime } from '@/libs/utils'
@@ -57,7 +57,7 @@ export const carColumns = handleEdit => {
       dataIndex: 'updateAt',
       key: 'updateAt',
       render: (text, record) => {
-        return <div>{formatTime(record.updateAt, 'YYYY-MM-DD HH:mm:ss')}</div>
+        return <div>{formatTime(record.updatedAt, 'YYYY-MM-DD HH:mm:ss')}</div>
       }
     },
     {

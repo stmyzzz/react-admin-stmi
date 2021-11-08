@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-11-02 15:57:12
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-02 16:14:57
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-08 13:03:19
  */
 import { handleActions } from 'redux-actions'
 import { GET_ROLE_LIST_REQUEST, GET_ROLE_LIST_SUCCESSED } from './actions'
@@ -23,8 +23,7 @@ export const roleReducer = handleActions(
         ...state,
         loading: R.mergeDeepRight(state.loading, {
           permissionList: true
-        }),
-        permissionList: action.payload
+        })
       }
     },
     [GET_ROLE_LIST_SUCCESSED]: (state, action) => {

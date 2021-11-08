@@ -4,10 +4,10 @@
  * @Author: stmy.ding
  * @Date: 2021-09-27 18:05:11
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-05 14:27:19
+ * @LastEditTime: 2021-11-08 11:15:35
  */
 import React, { Suspense } from 'react'
-import { Switch, Route, RouteProps, Redirect } from 'react-router-dom'
+import { Switch, Route, RouteProps } from 'react-router-dom'
 import PageLoading from '../../components/base/page-loading'
 import IRoute from './IRoute'
 import { appRoutes } from '@/router/innerRouter/Routes'

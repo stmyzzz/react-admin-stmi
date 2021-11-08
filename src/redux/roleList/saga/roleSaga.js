@@ -9,7 +9,7 @@
 import { put, call } from 'redux-saga/effects'
 import { getRoleList, addRole, updateRole } from '@/services/admin/role'
 import { setError } from '@/redux/error/actions'
-import { getRoleListSuccessed } from '@/redux/role/actions'
+import { getRoleListSuccessed } from '@/redux/roleList/actions'
 export function* getRoleSaga({ payload }) {
   try {
     const res = yield call(getRoleList, payload)

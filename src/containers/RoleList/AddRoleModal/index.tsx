@@ -11,7 +11,7 @@ import { FC, useEffect, useState } from 'react'
 import * as R from 'ramda'
 import { permissionShow } from '@/pages/RoleList/config'
 import { usePromise } from '@/hooks'
-import { addRoleRequest, updateRoleRequest } from '@/redux/role/actions'
+import { addRoleRequest, updateRoleRequest } from '@/redux/roleList/actions'
 
 export interface IAddRoleModal {
   data?: any
