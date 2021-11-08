@@ -4,10 +4,10 @@
  * @Author: stmy.ding
  * @Date: 2021-09-29 17:11:16
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 14:10:23
+ * @LastEditTime: 2021-11-08 17:12:23
  */
-import { Tooltip, Tag, Tabs } from 'antd'
-import { useLocation, Link, useHistory } from 'react-router-dom'
+import { Tabs } from 'antd'
+import { useLocation, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTag, removeTag, setActiveTag } from '@/redux/app/actions'
 import { useEffect } from 'react'

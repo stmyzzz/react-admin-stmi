@@ -4,12 +4,12 @@
  * @Author: stmy.ding
  * @Date: 2021-09-28 10:48:13
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 14:22:36
+ * @LastEditTime: 2021-11-08 17:11:30
  */
 import React, { useState, useEffect } from 'react'
 import { Layout, message } from 'antd'
 import SiderBar from './components/SiderBar'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import IRoute from '@/router/innerRouter/IRoute'
 import initRoutes from '../../router/innerRouter/initRoutes'
 import HeaderBar from './components/HeaderBar'

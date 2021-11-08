@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-05 21:07:42
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-08 14:45:32
+ * @LastEditTime: 2021-11-08 17:12:44
  */
 import {
   Modal,
@@ -17,7 +17,7 @@ import {
   Checkbox,
   Divider
 } from 'antd'
-import React, { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect } from 'react'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import TitleChid from '@/components/TitleChild'
 import { addSetRequest, updateSetRequest } from '@/redux/setList/actions'

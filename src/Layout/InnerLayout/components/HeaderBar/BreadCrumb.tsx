@@ -3,10 +3,9 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-09-29 15:16:28
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-01 17:25:28
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-08 17:11:35
  */
-import React from 'react'
 import { Breadcrumb as AntdBreadcrumb } from 'antd'
 import { Link, withRouter } from 'react-router-dom'
 import { routes } from '@/router/innerRouter/Routes'
@@ -17,7 +16,7 @@ const Breadcrumb = withRouter(props => {
     b.push(_.pick(it, 'path', 'title'))
     if (it.children) {
       it.children.map((child: any) => {
-        b.push(_.pick(child, 'path', 'title'))
+        return b.push(_.pick(child, 'path', 'title'))
       })
     }
   })

@@ -4,11 +4,9 @@
  * @Author: stmy.ding
  * @Date: 2021-09-28 13:58:53
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 13:44:33
+ * @LastEditTime: 2021-11-08 17:13:22
  */
 //获取有权限的路由表
-import { of } from 'ramda'
-import { IPermission } from '../../model/common'
 import IRoute from './IRoute'
 import { routes } from './Routes'
 

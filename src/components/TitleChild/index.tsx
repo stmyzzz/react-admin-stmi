@@ -4,10 +4,9 @@
  * @Author: stmy.ding
  * @Date: 2021-10-19 14:19:42
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-06 16:46:22
+ * @LastEditTime: 2021-11-08 17:12:30
  */
 
-import styles from './index.module.css'
 import { FC } from 'react'
 export interface ITitleChildProps {
   title: string
