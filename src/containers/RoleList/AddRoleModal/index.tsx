@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 11:02:38
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-06 18:14:31
+ * @LastEditTime: 2021-11-08 14:45:28
  */
 import { Modal, Form, Tree, Input, message } from 'antd'
 import { FC, useEffect, useState } from 'react'
@@ -28,7 +28,6 @@ const AddUserModal: FC<IAddRoleModal> = (props: IAddRoleModal) => {
 
   const handleSubmit = () => {
     form.validateFields().then((values: any) => {
-      console.log(`values`, values)
       const params = {
         id: data.id,
         ...values,
@@ -70,7 +69,6 @@ const AddUserModal: FC<IAddRoleModal> = (props: IAddRoleModal) => {
   const onCheck = (checkedKeys: any, info: any) => {
     let checkedKey = checkedKeys
     setCheckedKeys(checkedKey)
-    console.log(`checkedKeys`, checkedKeys)
   }
   return (
     <Modal

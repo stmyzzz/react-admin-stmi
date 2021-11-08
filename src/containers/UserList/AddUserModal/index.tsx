@@ -3,8 +3,8 @@
  * @version:
  * @Author: stmy.ding
  * @Date: 2021-11-02 11:02:38
- * @LastEditors: stmy.ding
- * @LastEditTime: 2021-11-04 10:08:38
+ * @LastEditors: dlyan.ding
+ * @LastEditTime: 2021-11-08 14:45:41
  */
 import { Modal, Form, Radio, Select, Input, message } from 'antd'
 import { FC, useEffect, useState } from 'react'
@@ -30,7 +30,6 @@ const AddUserModal: FC<IAddUserModalProps> = (props: IAddUserModalProps) => {
   const [loading, setLoading] = useState(false)
   const handleSubmit = () => {
     form.validateFields().then((values: any) => {
-      console.log(`values`, values)
       const params = {
         ...values
       }

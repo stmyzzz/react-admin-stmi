@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-28 10:49:49
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 12:51:58
+ * @LastEditTime: 2021-11-08 14:45:43
  */
 import { Form, message, Input, Button } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
@@ -24,7 +24,6 @@ const OuterLayout = () => {
       password
     }
     dispatchPromise(loginRequest(params)).then(res => {
-      console.log(`res`, res)
       if (res.ret === 0) {
         const { userInfo } = res
         message.success({

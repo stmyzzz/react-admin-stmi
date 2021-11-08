@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-29 13:52:29
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-08 13:50:49
+ * @LastEditTime: 2021-11-08 14:45:58
  */
 import MainLayout from '@/components/MainLayout'
 import { Table, Button } from 'antd'
@@ -21,7 +21,6 @@ import * as R from 'ramda'
 import './index.css'
 import { defaultPageConfig } from '@/config'
 const expandedRowRender = (expended: any, record: any) => {
-  console.log(`expended.types`, expended)
   return (
     <Table
       columns={typeColmns}

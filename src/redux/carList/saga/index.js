@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-05 10:06:23
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-05 10:23:21
+ * @LastEditTime: 2021-11-08 14:46:28
  */
 import { all, takeLatest } from 'redux-saga/effects'
 import {
@@ -21,6 +21,6 @@ export function* carWatcher() {
       takeLatest(UPDATE_CAR_REQUEST, updateCarSaga)
     ])
   } catch (err) {
-    console.log(`err`, err)
+    console.log(err)
   }
 }

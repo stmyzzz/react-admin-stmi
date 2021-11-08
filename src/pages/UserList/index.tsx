@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:07:25
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-08 13:05:12
+ * @LastEditTime: 2021-11-08 14:46:03
  */
 import { Table, Modal, message } from 'antd'
 import { useState, useEffect } from 'react'
@@ -33,7 +33,6 @@ const AdminList = () => {
   const handleUserSearch = (e: any) => {
     setSearchFilter(e)
   }
-  console.log(`userList`, userList)
   const handleAddUser = (e: any) => {
     setCurrentType('add')
     setShowAddModal(true)

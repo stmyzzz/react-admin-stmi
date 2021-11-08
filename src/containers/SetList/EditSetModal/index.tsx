@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-05 21:07:42
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-08 14:40:58
+ * @LastEditTime: 2021-11-08 14:45:32
  */
 import {
   Modal,
@@ -56,7 +56,6 @@ const EditSetModal: FC<IEditSetModalProps> = (props: IEditSetModalProps) => {
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
   const [form] = Form.useForm()
-  console.log(`data`, data)
   const onCheckAllChange = (e: any) => {
     setCheckedList(e.target.checked ? plainOptions : [])
     setIndeterminate(false)
@@ -99,12 +98,10 @@ const EditSetModal: FC<IEditSetModalProps> = (props: IEditSetModalProps) => {
   }
   const handleSubmit = () => {
     form.validateFields().then((values: any) => {
-      console.log(`vlaues`, values)
       if (fileList.length === 0) {
         message.warning('至少需要上传一张图片')
         return
       }
-      console.log(`表单的fileList`, fileList)
       const fileParams = fileList.map((item: any) => {
         const {
           response: { path }
@@ -144,7 +141,6 @@ const EditSetModal: FC<IEditSetModalProps> = (props: IEditSetModalProps) => {
     name: 'avatar',
     action: 'http://112.74.56.190:3000/upload',
     beforeUpload: (file: any) => {
-      console.log(`file`, file)
       if (file.size >= 1024 * 1024) {
         message.error(`${file.name} 文件过大`)
       }

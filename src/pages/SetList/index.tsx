@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-29 13:52:36
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-08 14:34:45
+ * @LastEditTime: 2021-11-08 14:46:00
  */
 import MainLayout from '@/components/MainLayout'
 import { Card, Row, Col, Button } from 'antd'
@@ -45,7 +45,6 @@ const SetList = () => {
     setCurrentType('add')
     setSetItem({})
   }
-  console.log(`setList`, setList)
   return (
     <MainLayout>
       <div className='addBtn'>

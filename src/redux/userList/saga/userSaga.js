@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 14:35:35
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-05 10:18:12
+ * @LastEditTime: 2021-11-08 14:46:22
  */
 import { call, put } from 'redux-saga/effects'
 import {
@@ -19,7 +19,6 @@ import { getUserListSuccessed } from '@/redux/userList/actions'
 export function* getUserListSaga({ payload }) {
   try {
     const res = yield call(getUserList, payload)
-    console.log(`res`, res)
     if (res.ret === 0) {
       yield put(getUserListSuccessed(res))
       return

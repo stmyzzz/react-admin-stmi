@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-05 10:06:17
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-06 17:52:26
+ * @LastEditTime: 2021-11-08 14:46:13
  */
 
 import { put, call } from 'redux-saga/effects'
@@ -15,7 +15,6 @@ import { getCarListSuccessed } from '../actions'
 export function* getCarListSaga({ payload }) {
   try {
     const response = yield call(getCarList, payload)
-    console.log(`response`, response)
     if (response.ret === 0) {
       yield put(getCarListSuccessed(response))
       return

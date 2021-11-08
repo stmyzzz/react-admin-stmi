@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-04 17:26:18
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-08 14:36:01
+ * @LastEditTime: 2021-11-08 14:44:14
  */
 import {
   Modal,
@@ -44,7 +44,6 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
   const dispatchPromise = usePromise()
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
-  console.log(`data`, data)
   useEffect(() => {
     if (visible) {
       if (type === 'add') {
@@ -61,13 +60,10 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
           ]
         })
       }
-
-      console.log(`object`, form)
     }
   }, [data])
   const onFinish = (record: any) => {
     form.validateFields().then((values: any) => {
-      console.log(`传递的参数`, values)
       if (!values.types || values.types.length === 0) {
         message.error('至少输入一个车型')
         return
@@ -103,11 +99,7 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
         .finally(() => {
           setLoading(false)
         })
-      console.log(`传递的参数params`, params)
     })
-  }
-  const handleChange = (e: any) => {
-    console.log('handleSubmit')
   }
   return (
     <Modal
@@ -138,7 +130,6 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
             allowClear
             placeholder='请输入销售城市'
             options={areas}
-            onChange={handleChange}
           />
         </Form.Item>
         <Form.Item

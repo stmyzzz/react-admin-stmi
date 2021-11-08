@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-30 09:56:25
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 14:48:36
+ * @LastEditTime: 2021-11-08 14:46:06
  */
 import { handleActions } from 'redux-actions'
 import {
@@ -25,9 +25,7 @@ const INITIAL_STATE = {
 export const appReducer = handleActions(
   {
     [ADD_TAG]: (state, action) => {
-      console.log(`action.payload`, action.payload)
       const a = getPathByRoutes(action.payload)
-      console.log(`a`, a)
       if (
         !state.tags.find(tag => action.payload === tag.pathname) &&
         action.payload !== '/' &&
@@ -68,7 +66,6 @@ export const appReducer = handleActions(
     },
     [SET_ACTIVE_TAG]: (state, action) => {
       state.activeTag = action.payload
-      console.log(`stateactive`, state)
       return {
         ...state
       }

@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 15:57:38
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-07 02:46:37
+ * @LastEditTime: 2021-11-08 14:46:17
  */
 import { put, call } from 'redux-saga/effects'
 import { getRoleList, addRole, updateRole } from '@/services/admin/role'
@@ -13,7 +13,6 @@ import { getRoleListSuccessed } from '@/redux/roleList/actions'
 export function* getRoleSaga({ payload }) {
   try {
     const res = yield call(getRoleList, payload)
-    console.log(`permission res`, res)
     if (res.ret === 0) {
       yield put(getRoleListSuccessed(res))
       return
