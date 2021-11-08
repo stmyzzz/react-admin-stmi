@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-28 16:31:57
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 14:07:09
+ * @LastEditTime: 2021-11-08 10:25:30
  */
 import React from 'react'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
@@ -62,7 +62,7 @@ const HeaderBar: React.FC<IHeaderProps> = props => {
             style={{ backgroundColor: '#f56a00', cursor: 'pointer' }}
             size={50}
           >
-            {nameEn || '未登录'}
+            {nameEn.split('.')[0] || '未登录'}
           </Avatar>
         </Dropdown>
       </div>
