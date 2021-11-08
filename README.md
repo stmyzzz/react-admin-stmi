@@ -8,7 +8,7 @@
 符合环境配置流程，模块化开发，webpack打包发布。
 
 ### 代码规范
-
+参考：https://guide.aotu.io/docs/#React-%E8%A7%84%E8%8C%83
 
 ## 项目结构设计
 
