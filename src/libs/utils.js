@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-30 17:11:33
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-04 13:52:16
+ * @LastEditTime: 2021-11-08 14:07:13
  */
 import moment from 'moment'
 import { routes } from '@/router/innerRouter/Routes'
@@ -36,4 +36,16 @@ export const getPathByRoutes = pathname => {
 //国际时间转换标准时间
 export const formatTime = (time, format) => {
   return moment(time).format(format)
+}
+
+//求数组最值
+export const arrMaxMin = arr => {
+  if (arr.length === 1) {
+    return arr[0]
+  }
+  const sortFn = function (a, b) {
+    return a - b
+  }
+  const sortArr = arr.sort(sortFn)
+  return sortArr[0] + '-' + sortArr[sortArr.length - 1]
 }

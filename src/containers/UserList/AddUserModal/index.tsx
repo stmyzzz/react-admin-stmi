@@ -25,7 +25,7 @@ const AddUserModal: FC<IAddUserModalProps> = (props: IAddUserModalProps) => {
   const { data, type, visible, handleCancel } = props
   const dispatchPromise = usePromise()
   const [form] = Form.useForm()
-  const permissionList = useSelector(roleListSelector)
+  const roleList = useSelector(roleListSelector)
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const handleSubmit = () => {
@@ -97,7 +97,7 @@ const AddUserModal: FC<IAddUserModalProps> = (props: IAddUserModalProps) => {
           initialValue={R.pathOr(undefined, ['jobName'], data)}
         >
           <Select style={{ width: '100%' }} placeholder='请选择职位'>
-            {R.pathOr([], ['data'], permissionList).map(
+            {R.pathOr([], ['data'], roleList).map(
               (item: { id: number; jobName: string }) => {
                 return (
                   <Option key={item.id} value={item.jobName}>

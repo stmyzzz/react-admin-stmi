@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-11-02 10:06:27
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-08 13:02:20
+ * @LastEditTime: 2021-11-08 13:53:05
  */
 import MainLayout from '@/components/MainLayout'
 import { Button, Table } from 'antd'
@@ -27,7 +27,7 @@ export const RoleList = () => {
   const isLoadingRoleList = useSelector(isLoadingRoleListSelector)
   const [RoleItem, setRoleItem] = useState<any>()
   const dispatch = useDispatch()
-  const permissionList = useSelector(roleListSelector)
+  const roleList = useSelector(roleListSelector)
   const handleAddRole = () => {
     setIsShowRoleModal(true)
     setCurrentType('add')
@@ -70,16 +70,15 @@ export const RoleList = () => {
         className='roleTable'
         columns={userColumns(handlePermissionView)}
         rowKey={record => record.id}
-        scroll={{ y: 600 }}
-        dataSource={R.pathOr([], ['data'], permissionList)}
+        dataSource={R.pathOr([], ['data'], roleList)}
         pagination={{
-          current: R.pathOr(1, ['page_no'], permissionList),
+          current: R.pathOr(1, ['page_no'], roleList),
           pageSize: R.pathOr(
             defaultPageConfig.pageSize,
             ['page_size'],
-            permissionList
+            roleList
           ),
-          total: R.pathOr(0, ['total'], permissionList),
+          total: R.pathOr(0, ['total'], roleList),
           showSizeChanger: true,
           showTotal: total => `共${total}条记录`
         }}

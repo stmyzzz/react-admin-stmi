@@ -12,7 +12,7 @@ const CarList = lazy(() => import('../../pages/CarList'))
 const SetList = lazy(() => import('../../pages/SetList'))
 const Home = lazy(() => import('../../pages/home'))
 const UserList = lazy(() => import('../../pages/UserList'))
-const PermissionList = lazy(() => import('../../pages/RoleList'))
+const roleList = lazy(() => import('../../pages/RoleList'))
 const sellPanel = lazy(() => import('../../pages/SellPanel'))
 const setPanel = lazy(() => import('../../pages/SetPanel'))
 
@@ -53,7 +53,7 @@ const routes: IRoute[] = [
         path: '/admin/permission',
         access: 'permissionAdmin',
         exact: true,
-        component: PermissionList
+        component: roleList
       }
     ]
   },

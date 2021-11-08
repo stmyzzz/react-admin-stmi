@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-04 17:26:18
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-06 18:26:09
+ * @LastEditTime: 2021-11-08 14:36:01
  */
 import {
   Modal,
@@ -17,6 +17,7 @@ import {
   DatePicker,
   InputNumber
 } from 'antd'
+import { arrMaxMin } from '@/libs/utils'
 import { sellStatus } from '@/pages/CarList/config'
 import { FC, useEffect, useState } from 'react'
 import * as R from 'ramda'
@@ -42,6 +43,7 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
   const { data, type, visible, handleCancel } = props
   const dispatchPromise = usePromise()
   const [form] = Form.useForm()
+  const [loading, setLoading] = useState(false)
   console.log(`data`, data)
   useEffect(() => {
     if (visible) {
@@ -73,8 +75,14 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
       const params = {
         id: data.id,
         ...values,
-        sellCity: values.sellCity.join(',')
+        sellCity: values.sellCity.join(','),
+        priceRange: arrMaxMin(
+          values.types.map((item: { typePrice: string }) => {
+            return item.typePrice
+          })
+        )
       }
+      setLoading(true)
       dispatchPromise(
         type === 'add' ? addCarRequest(params) : updateCarRequest(params)
       )
@@ -93,7 +101,7 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
           }
         })
         .finally(() => {
-          // setLoading(false)
+          setLoading(false)
         })
       console.log(`传递的参数params`, params)
     })
@@ -101,7 +109,6 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
   const handleChange = (e: any) => {
     console.log('handleSubmit')
   }
-
   return (
     <Modal
       title={type === 'add' ? '添加用户' : '编辑用户'}
@@ -111,6 +118,7 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
       destroyOnClose={true}
       onOk={onFinish}
       forceRender={true}
+      confirmLoading={loading}
     >
       <Form form={form} name='carForm' autoComplete='off'>
         <Form.Item
@@ -144,7 +152,7 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
           />
         </Form.Item>
         <Form.Item
-          label='价格'
+          label='价格区间'
           name='priceRange'
           initialValue={R.pathOr('', ['priceRange'], data)}
         >
@@ -169,7 +177,7 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
                     label='最大功率'
                     name={[field.name, 'maxPower']}
                     fieldKey={[field.fieldKey, 'maxPower']}
-                    rules={[{ required: true, message: 'Missing price' }]}
+                    rules={[{ required: true, message: '请输入最大功率' }]}
                   >
                     <InputNumber />
                   </Form.Item>
@@ -178,7 +186,7 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
                     label='百公里加速'
                     name={[field.name, 'hundredSpeed']}
                     fieldKey={[field.fieldKey, 'hundredSpeed']}
-                    rules={[{ required: true, message: 'Missing price' }]}
+                    rules={[{ required: true, message: '请输入百公里加速' }]}
                   >
                     <InputNumber />
                   </Form.Item>
@@ -188,7 +196,7 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
                     label='最高时速'
                     name={[field.name, 'maxSpeed']}
                     fieldKey={[field.fieldKey, 'maxSpeed']}
-                    rules={[{ required: true, message: 'Missing price' }]}
+                    rules={[{ required: true, message: '请输入最高时速' }]}
                   >
                     <InputNumber />
                   </Form.Item>
@@ -199,7 +207,7 @@ const AddCarModal: FC<IAddCarModal> = (props: IAddCarModal) => {
                     label='价格'
                     name={[field.name, 'typePrice']}
                     fieldKey={[field.fieldKey, 'typePrice']}
-                    rules={[{ required: true, message: 'Missing price' }]}
+                    rules={[{ required: true, message: '请输入价格' }]}
                   >
                     <Input allowClear />
                   </Form.Item>

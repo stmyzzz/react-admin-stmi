@@ -7,6 +7,6 @@
  * @LastEditTime: 2021-11-02 17:18:25
  */
 
-export const roleListSelector = state => state.permission.permissionList
+export const roleListSelector = state => state.permission.roleList
 export const isLoadingRoleListSelector = state =>
-  state.permission.loading.permissionList
+  state.permission.loading.roleList

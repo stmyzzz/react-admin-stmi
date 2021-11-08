@@ -4,7 +4,7 @@
  * @Author: stmy.ding
  * @Date: 2021-09-29 13:52:29
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-07 15:24:09
+ * @LastEditTime: 2021-11-08 13:50:49
  */
 import MainLayout from '@/components/MainLayout'
 import { Table, Button } from 'antd'
@@ -13,9 +13,13 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCarListRequest } from '@/redux/carList/actions'
 import AddCarModal from '@/containers/CarList/AddCarModal'
-import { carListSelector } from '@/redux/carList/selectors'
+import {
+  carListSelector,
+  isLoadingCarListSelector
+} from '@/redux/carList/selectors'
 import * as R from 'ramda'
 import './index.css'
+import { defaultPageConfig } from '@/config'
 const expandedRowRender = (expended: any, record: any) => {
   console.log(`expended.types`, expended)
   return (
@@ -33,6 +37,7 @@ const CarList = () => {
   const [currentType, setCurrentType] = useState('')
   const [carItem, setCarItem] = useState({})
   const dispatch = useDispatch()
+  const isLoadingCarList = useSelector(isLoadingCarListSelector)
   const handleEdit = (record: any, type: string) => {
     setCurrentType(type)
     setShowAddModal(true)
@@ -40,9 +45,22 @@ const CarList = () => {
   }
   const addUserModalClose = () => {
     setShowAddModal(false)
+    getCarList()
+  }
+  const getCarList = (pageNo = 1, pageSize = defaultPageConfig.pageSize) => {
+    const params = {
+      page_no: pageNo,
+      page_size: pageSize
+    }
+    dispatch(getCarListRequest(params))
+  }
+  const handlePageChange = (page: any) => {
+    const pageNo = page.current
+    const pageSize = page.pageSize
+    getCarList(pageNo, pageSize)
   }
   useEffect(() => {
-    dispatch(getCarListRequest())
+    getCarList()
   }, [])
   return (
     <MainLayout>
@@ -62,6 +80,19 @@ const CarList = () => {
           dataSource={R.pathOr([], ['data'], carList)}
           rowKey={data => data.id}
           expandable={{ expandedRowRender }}
+          pagination={{
+            current: R.pathOr(1, ['page_no'], carList),
+            pageSize: R.pathOr(
+              defaultPageConfig.pageSize,
+              ['page_size'],
+              carList
+            ),
+            total: R.pathOr(0, ['total'], carList),
+            showSizeChanger: true,
+            showTotal: total => `共${total}条记录`
+          }}
+          onChange={handlePageChange}
+          loading={isLoadingCarList}
         ></Table>
       </div>
       <AddCarModal

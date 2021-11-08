@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-11-05 21:07:42
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-11-07 15:57:23
+ * @LastEditTime: 2021-11-08 14:40:58
  */
 import {
   Modal,
@@ -64,6 +64,7 @@ const EditSetModal: FC<IEditSetModalProps> = (props: IEditSetModalProps) => {
   }
   useEffect(() => {
     if (visible) {
+      form.resetFields()
       if (type === 'edit') {
         const {
           carName,
@@ -85,7 +86,9 @@ const EditSetModal: FC<IEditSetModalProps> = (props: IEditSetModalProps) => {
           return { uid: index, url: item, response: { path: item } }
         })
         setFileList(arr)
-        console.log(`setFileList(arr)`, fileList)
+      } else {
+        setFileList([])
+        setCheckedList([])
       }
     }
   }, [data])
@@ -109,7 +112,6 @@ const EditSetModal: FC<IEditSetModalProps> = (props: IEditSetModalProps) => {
         return path
       })
       const params = { imgUrl: fileParams, ...values, setSystem: checkedList }
-      console.log(`params`, params)
       if (type === 'edit') {
         params.id = data.id
       }
@@ -118,18 +120,16 @@ const EditSetModal: FC<IEditSetModalProps> = (props: IEditSetModalProps) => {
       )
         .then(res => {
           if (res.ret === 0) {
-            if (res.ret === 0) {
-              message.success({
-                content: '保存成功！',
-                key: 'API_REQUEST'
-              })
-              handleCancel()
-            } else {
-              message.error({
-                content: res.errmsg,
-                key: 'API_REQUEST'
-              })
-            }
+            message.success({
+              content: '保存成功！',
+              key: 'API_REQUEST'
+            })
+            handleCancel()
+          } else {
+            message.error({
+              content: res.errmsg,
+              key: 'API_REQUEST'
+            })
           }
         })
         .finally(() => {
@@ -144,6 +144,7 @@ const EditSetModal: FC<IEditSetModalProps> = (props: IEditSetModalProps) => {
     name: 'avatar',
     action: 'http://112.74.56.190:3000/upload',
     beforeUpload: (file: any) => {
+      console.log(`file`, file)
       if (file.size >= 1024 * 1024) {
         message.error(`${file.name} 文件过大`)
       }
@@ -170,6 +171,13 @@ const EditSetModal: FC<IEditSetModalProps> = (props: IEditSetModalProps) => {
     onChange(props: any) {
       const { fileList } = props
       setFileList(fileList)
+    },
+    onRemove(props: any) {
+      if (fileList.length <= 1) {
+        message.warning('最少需要一张图片')
+        return false
+      }
+      return true
     }
   }
   const uploadButton = (
@@ -204,7 +212,7 @@ const EditSetModal: FC<IEditSetModalProps> = (props: IEditSetModalProps) => {
         <TitleChid title='车型'>
           <Form.Item
             name='carName'
-            rules={[{ required: true, message: 'Missing price' }]}
+            rules={[{ required: true, message: '请输入车型' }]}
           >
             <Input disabled={type === 'edit'} placeholder='请输入车型' />
           </Form.Item>
@@ -215,14 +223,14 @@ const EditSetModal: FC<IEditSetModalProps> = (props: IEditSetModalProps) => {
               <Form.Item
                 label='长/宽/高'
                 name='size'
-                rules={[{ required: true, message: 'Missing price' }]}
+                rules={[{ required: true, message: '请输入长/宽/高' }]}
               >
                 <Input placeholder='请按/隔开' />
               </Form.Item>
             </Col>
             <Col span={6}>
               <Form.Item
-                rules={[{ required: true, message: 'Missing price' }]}
+                rules={[{ required: true, message: '请输入轴距' }]}
                 label='轴距'
                 name='axisStance'
               >

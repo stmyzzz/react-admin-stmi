@@ -10,9 +10,9 @@ import { handleActions } from 'redux-actions'
 import { GET_ROLE_LIST_REQUEST, GET_ROLE_LIST_SUCCESSED } from './actions'
 import * as R from 'ramda'
 const INITIAL_STATE = {
-  permissionList: [],
+  roleList: [],
   loading: {
-    permissionList: false
+    roleList: false
   }
 }
 
@@ -22,7 +22,7 @@ export const roleReducer = handleActions(
       return {
         ...state,
         loading: R.mergeDeepRight(state.loading, {
-          permissionList: true
+          roleList: true
         })
       }
     },
@@ -30,9 +30,9 @@ export const roleReducer = handleActions(
       return {
         ...state,
         loading: R.mergeDeepRight(state.loading, {
-          permissionList: false
+          roleList: false
         }),
-        permissionList: action.payload
+        roleList: action.payload
       }
     }
   },
